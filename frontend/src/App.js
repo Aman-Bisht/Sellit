@@ -150,7 +150,7 @@ function App() {
             )
           }
         />
-        <Route path="/*" element={<NotFound />} />
+        {/* <Route path="/*" element={<NotFound />} /> */}
       </Routes>
       <Footer />
     </Router>
