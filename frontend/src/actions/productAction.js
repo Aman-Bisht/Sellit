@@ -48,13 +48,14 @@ export const getProduct =
         type: ALL_PRODUCT_REQUEST,
       });
 
-      let link = `https://sellit.onrender.com/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
+      let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
 
       if (category) {
-        link = `https://sellit.onrender.com/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
+        link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
       }
 
       const { data } = await axios.get(link);
+
       dispatch({
         type: ALL_PRODUCT_SUCCESS,
         payload: data,
@@ -73,7 +74,7 @@ export const getProductDetails = (id) => async (dispatch) => {
     dispatch({
       type: PRODUCT_DETAILS_REQUEST,
     });
-    const { data } = await axios.get(`https://sellit.onrender.com/api/v1/product/${id}`);
+    const { data } = await axios.get(`/api/v1/product/${id}`);
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
       payload: data.product,
@@ -93,7 +94,7 @@ export const newReview = (reviewData) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
     };
-    const { data } = await axios.put(`https://sellit.onrender.com/api/v1/review`, reviewData, config);
+    const { data } = await axios.put(`/api/v1/review`, reviewData, config);
     dispatch({
       type: NEW_REVIEW_SUCCESS,
       payload: data.success,
@@ -126,7 +127,7 @@ export const getAllReviews = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_REVIEW_REQUEST });
 
-    const { data } = await axios.get(`https://sellit.onrender.com/api/v1/reviews?id=${id}`);
+    const { data } = await axios.get(`/api/v1/reviews?id=${id}`);
 
     dispatch({
       type: ALL_REVIEW_SUCCESS,
@@ -145,7 +146,7 @@ export const deleteReviews = (reviewId, productId) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_REVIEW_REQUEST });
     const { data } = await axios.delete(
-      `https://sellit.onrender.com/api/v1/reviews?id=${reviewId}&productId=${productId}`
+      `/api/v1/reviews?id=${reviewId}&productId=${productId}`
     );
     dispatch({
       type: DELETE_REVIEW_SUCCESS,
@@ -163,7 +164,7 @@ export const deleteReviews = (reviewId, productId) => async (dispatch) => {
 export const deleteProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
-    const { data } = await axios.delete(`https://sellit.onrender.com/api/v1/admin/product/${id}`);
+    const { data } = await axios.delete(`/api/v1/admin/product/${id}`);
     dispatch({
       type: DELETE_PRODUCT_SUCCESS,
       payload: data.success,
@@ -184,7 +185,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
     const { data } = await axios.put(
-      `https://sellit.onrender.com/api/v1/admin/product/${id}`,
+      `/api/v1/admin/product/${id}`,
       productData,
       config
     );
@@ -208,7 +209,7 @@ export const createProduct = (productData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
     const { data } = await axios.post(
-      `https://sellit.onrender.com/api/v1/admin/product/new`,
+      `/api/v1/admin/product/new`,
       productData,
       config
     );
@@ -224,7 +225,6 @@ export const createProduct = (productData) => async (dispatch) => {
   }
 };
 
-
 //CREATE PRODUCT BY USER
 export const createUserProduct = (productData) => async (dispatch) => {
   try {
@@ -233,7 +233,7 @@ export const createUserProduct = (productData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
     const { data } = await axios.post(
-      `https://sellit.onrender.com/api/v1/user/product/new`,
+      `/api/v1/user/product/new`,
       productData,
       config
     );
@@ -254,7 +254,7 @@ export const getAdminProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCT_REQUEST });
 
-    const { data } = await axios.get("https://sellit.onrender.com/api/v1/admin/products");
+    const { data } = await axios.get("/api/v1/admin/products");
 
     dispatch({
       type: ADMIN_PRODUCT_SUCCESS,
