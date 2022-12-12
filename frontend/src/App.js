@@ -145,9 +145,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route
           element={
-            window.location.pathname === "/process/payment" ? (
-              <Payment />
-            ) : (
+            window.location.pathname === "/process/payment" ? <Home /> : (
               <NotFound />
             )
           }
