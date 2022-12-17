@@ -34,14 +34,12 @@ const UserOptions = ({ user }) => {
     },
     { icon: <ExistToAppIcon />, name: "Logout", func: logoutUser },
   ];
-  if ((user = true)) {
-    if (user.role === "admin") {
-      options.unshift({
-        icon: <DashboardIcon />,
-        name: "Dashboard",
-        func: dashboard,
-      });
-    }
+  if (user.role === "admin") {
+    options.unshift({
+      icon: <DashboardIcon />,
+      name: "Dashboard",
+      func: dashboard,
+    });
   }
 
   function dashboard() {
