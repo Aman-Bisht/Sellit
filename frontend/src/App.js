@@ -67,7 +67,7 @@ function App() {
       <Header />
 
       {isAuthenticated && <UserOptions user={user} />}
-      {stripeApiKey && (
+      {/* {stripeApiKey && (
         <Elements stripe={loadStripe(stripeApiKey)}>
           <Routes>
             <Route exact path="/process/payment" element={<ProtectedRoute />}>
@@ -75,7 +75,7 @@ function App() {
             </Route>
           </Routes>
         </Elements>
-      )}
+      )} */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<ProductDetails />} />
@@ -84,6 +84,18 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
+        {stripeApiKey && (
+        <Route
+          path="/process/payment"
+          element={
+            <ProtectedRoute>
+              <Elements stripe={loadStripe(stripeApiKey)}>
+                <Payment />
+              </Elements>
+            </ProtectedRoute>
+          }
+        />
+        )}
         <Route element={<ProtectedRoute />}>
           <Route path="/account" element={<Profile />} />
           <Route path="/me/update" element={<UpdateProfile />} />
@@ -91,6 +103,16 @@ function App() {
           <Route path="/user/product" element={<NewUserProduct />} />
           <Route path="/shipping" element={<Shipping />} />
           <Route path="/order/confirm" element={<ConfirmOrder />} />
+          {/* {stripeApiKey && (
+            <Route
+              path="/process/payment"
+              element={
+                <Elements stripe={loadStripe(stripeApiKey)}>
+                  <Payment />
+                </Elements>
+              }
+            />
+          )} */}
           <Route path="/success" element={<OrderSuccess />} />
           <Route path="/orders" element={<MyOrders />} />
           <Route path="/order/:id" element={<OrderDetails />} />
@@ -143,14 +165,16 @@ function App() {
         <Route path="/login" element={<LoginSignUp />} />
 
         <Route path="/cart" element={<Cart />} />
-        <Route
+        {/* <Route
           element={
-            window.location.pathname === "/process/payment" ? <Home /> : (
+            window.location.pathname === "/process/payment" ? (
+              <Payment />
+            ) : (
               <NotFound />
             )
           }
-        />
-        {/* <Route path="/*" element={<NotFound />} /> */}
+        /> */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </Router>
