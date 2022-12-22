@@ -110,7 +110,6 @@ function App() {
           <Route path="/shipping" element={<Shipping />} />
           <Route path="/order/confirm" element={<ConfirmOrder />} />
           <Route
-            exact
             path="/process/payment"
             element={
               <Elements stripe={stripePromise}>
