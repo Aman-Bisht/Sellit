@@ -18,6 +18,7 @@ const categories = [
   "Utensils",
   "Watch",
   "Chair",
+  "Books",
   "Table",
   "Other",
 ];

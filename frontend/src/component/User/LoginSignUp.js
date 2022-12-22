@@ -155,6 +155,7 @@ const LoginSignUp = () => {
                     name="name"
                     value={name}
                     onChange={registerDataChange}
+                    autocomplete="off"
                   />
                 </div>
                 <div className="signUpEmail">
@@ -166,6 +167,7 @@ const LoginSignUp = () => {
                     name="email"
                     value={email}
                     onChange={registerDataChange}
+                    autocomplete="off"
                   />
                 </div>
                 <div className="signUpPassword">
