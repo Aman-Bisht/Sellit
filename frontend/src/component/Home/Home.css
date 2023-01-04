@@ -1,5 +1,6 @@
 .banner {
-  background-image: url("../../images/home.webp");
+  /* background-image: url("../../images/home.webp"); */
+  background-image: url("../../images/logo1.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
