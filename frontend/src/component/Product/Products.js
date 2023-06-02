@@ -15,10 +15,11 @@ const categories = [
   "Bed",
   "Laptop",
   "T-Shirt",
+  "Book",
   "Utensils",
+  "Camera",
   "Watch",
   "Chair",
-  "Books",
   "Table",
   "Other",
 ];

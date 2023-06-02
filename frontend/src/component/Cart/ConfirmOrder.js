@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import MetaData from "../layout/MetaData";
 import "./ConfirmOrder.css";
 import { Link, useNavigate } from "react-router-dom";
-import { Typography } from '@mui/material';
+import { Typography } from "@mui/material";
 
 const ConfirmOrder = () => {
   const navigate = useNavigate();
@@ -16,9 +16,9 @@ const ConfirmOrder = () => {
     0
   );
 
-  const shippingCharges = subtotal > 1000 ? 0 : 200;
+  const shippingCharges = subtotal > 1000 ? 0 : 50;
 
-  const tax = subtotal * 0.18;
+  const tax = subtotal * 0.0018;
 
   const totalPrice = subtotal + tax + shippingCharges;
 
